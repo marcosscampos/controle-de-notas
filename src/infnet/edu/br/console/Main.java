@@ -1,10 +1,13 @@
-package infnet.edu.br;
+package infnet.edu.br.console;
 
 import javax.swing.*;
+import infnet.edu.br.domain.AlunoRepository;
 
 public class Main {
 
     public static void main(String[] args) {
+        AlunoRepository repository = new AlunoRepository();
+
         String[] opcoes = {
                 "[1] Registrar as notas de um novo aluno.",
                 "[2] Consultar boletim de um aluno.",
@@ -26,15 +29,15 @@ public class Main {
 
         switch (opcaoSelecionada) {
             case "[1]": {
-                CadastrarNotas();
+                repository.CadastrarAluno();
                 break;
             }
             case "[2]": {
-                ConsultaBoletim();
+                repository.ConsultaBoletim();
                 break;
             }
             case "[3]": {
-                ConsultaNotaTurma();
+                repository.ConsultaNotaTurma();
                 break;
             }
             case "[4]": {
@@ -51,33 +54,5 @@ public class Main {
                         JOptionPane.WARNING_MESSAGE);
             }
         }
-    }
-
-    public static void CadastrarNotas() {
-        String cadastraAluno = JOptionPane.showInputDialog(null,
-                "Digite o nome do aluno:",
-                "Cadastrar Aluno",
-                JOptionPane.QUESTION_MESSAGE);
-        System.out.println(cadastraAluno);
-
-        double notaAv1 = Double.parseDouble(JOptionPane.showInputDialog(null,
-                "Digite a nota do AV1:",
-                "Cadastrar nota do aluno",
-                JOptionPane.QUESTION_MESSAGE));
-        System.out.println(notaAv1);
-
-        double notaAv2 = Double.parseDouble(JOptionPane.showInputDialog(null,
-                "Digite a nota do AV2:",
-                "Cadastrar nota do aluno",
-                JOptionPane.QUESTION_MESSAGE));
-        System.out.println(notaAv2);
-    }
-
-    public static void ConsultaBoletim() {
-
-    }
-
-    public static void ConsultaNotaTurma() {
-
     }
 }
