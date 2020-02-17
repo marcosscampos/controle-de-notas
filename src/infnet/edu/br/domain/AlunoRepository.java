@@ -41,7 +41,7 @@ public class AlunoRepository {
                     "Inserir novo aluno? (S/N)",
                     "Cadastro de Alunos",
                     JOptionPane.QUESTION_MESSAGE);
-        } while (tmp.equals("s"));
+        } while (tmp.toLowerCase().equals("s"));
 
 
         MenuPrincipal();
