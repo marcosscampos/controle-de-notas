@@ -9,6 +9,7 @@ public class Aluno {
     protected String status;
 
 
+
     public void setRegistroAluno(int registro) {
         this.registroAluno = registro;
     }

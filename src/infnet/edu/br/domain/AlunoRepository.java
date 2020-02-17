@@ -4,14 +4,16 @@ import javax.swing.*;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.stream.IntStream;
 
 public class AlunoRepository {
-    Aluno aluno = new Aluno();
+    Aluno [] turma = new Aluno[100];
     String tmp;
 
     public void CadastrarAluno() {
 
         do {
+            Aluno aluno = new Aluno();
             tmp = JOptionPane.showInputDialog(null,
                     "Qual o nome do aluno?",
                     "Cadastro de Alunos",
@@ -35,12 +37,22 @@ public class AlunoRepository {
                     "Cadastro de Nota",
                     JOptionPane.QUESTION_MESSAGE);
             aluno.setNotaAv2(Double.parseDouble(tmp));
+
             calculaMedia();
+
+            for(int i = 0; i < turma.length; i++) {
+                if (turma[i] == null) {
+                    turma[i] = aluno;
+                    break;
+                }
+                System.out.println(turma[i]);
+            }
 
             tmp = JOptionPane.showInputDialog(null,
                     "Inserir novo aluno? (S/N)",
                     "Cadastro de Alunos",
                     JOptionPane.QUESTION_MESSAGE);
+
         } while (tmp.toLowerCase().equals("s"));
 
 
@@ -51,6 +63,8 @@ public class AlunoRepository {
     public void ConsultaBoletim() {
 
         do {
+            Aluno aluno = new Aluno();
+
             tmp = JOptionPane.showInputDialog(null,
                     "Digite o RA do aluno:",
                     "Consulta Boletim",
@@ -72,6 +86,8 @@ public class AlunoRepository {
                     "Consulta de aluno",
                     JOptionPane.INFORMATION_MESSAGE);
 
+            IntStream.range(0, turma.length).findFirst().ifPresent(i -> turma[i] = aluno);
+
         } while (tmp.toLowerCase().equals("s"));
 
         MenuPrincipal();
@@ -84,6 +100,7 @@ public class AlunoRepository {
     }
 
     public double calculaMedia() {
+        Aluno aluno = new Aluno();
         aluno.media = (aluno.notaAv1 + aluno.notaAv2) / 2;
 
         if (aluno.media >= 7) {
