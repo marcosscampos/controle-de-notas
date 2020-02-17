@@ -2,11 +2,12 @@ package infnet.edu.br.domain;
 
 public class Aluno {
 
-    protected int registroAluno;
     protected String aluno;
     protected double notaAv1, notaAv2;
     protected double media;
+    protected int registroAluno;
     protected String status;
+
 
     public void setRegistroAluno(int registro) {
         this.registroAluno = registro;
